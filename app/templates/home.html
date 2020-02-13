@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% from 'display_list.html'  import display_list %}
+{% block content %}
+{{super()}}
+{{display_list(items)}}
+{% endblock %}
