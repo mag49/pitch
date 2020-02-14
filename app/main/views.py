@@ -1,11 +1,13 @@
-from flask import render_template
-from app import app
+from flask_sqlalchemy import SQLAlchemy
 
-# Views
-@app.route('/')
-def index():
+bootstrap = Bootstrap()
+db = SQLAlchemy()
 
-    '''
-    View root page function that returns the index page and its data
-    '''
-    return render_template('index.html')
+def create_app(config_name):
+    app = Flask(__name__)
+
+    # ....
+
+    # Initializing flask extensions
+    bootstrap.init_app(app)
+    db.init_app(app)
