@@ -1,27 +1,3 @@
-# from flask import Flask
-# from flask_bootstrap import Bootstrap
-# from config import config_options
-# from flask_sqlalchemy import SQLAlchemy
-
-
-# bootstrap = Bootstrap()
-# db = SQLAlchemy()
-
-# def create_app(config_name):
-
-#     app = Flask(__name__)
-
-#     # Creating the app configurations
-
-#     app.config.from_object(config_options[config_name])
-#     config_options[config_name].init_app(app)
-
-#     # Initializing flask extensions
-#     bootstrap.init_app(app)
-#     db.init_app(app)
-
-
-
 from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
 from flask_login import login_required, current_user
@@ -111,11 +87,6 @@ def upvote(pitch_id):
     new_upvote.save_upvotes()
     return redirect(url_for('main.index'))
 
-
-
-#    new_upvote = Upvote(user=current_user, pitch=pitch, vote_number=1)
-#    new_vote.save_vote()
-# return redirect(url_for('main.index'))
 
 
 @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods = ['GET', 'POST'])
