@@ -4,47 +4,60 @@ from flask_login import login_required, current_user
 from ..models import PITCH, USER
 
 from flask.views import View,MethodView
+from .forms import UpdateProfile
 from .. import db
+from .forms import PitchForm, CommentForm
 
 
 
 # Views
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=user.username))
+
+    return render_template('profile/update.html',form =form)
+
 @main.route('/', methods = ['GET','POST'])
 def index():
 
     '''
     View root page function that returns the index page and its data
     '''
-    # pitch = PITCH.query.filter_by().first()
-    # title = 'Home'
-    # pickuplines = Pitch.query.filter_by(category="pickuplines")
-    # interviewpitch = Pitch.query.filter_by(category = "interviewpitch")
-    # bussinessplanpitch = Pitch.query.filter_by(category = "bussinessplan")
-    # promotionpitch = Pitch.query.filter_by(category = "promotionpitch")
-
-    # upvotes = Upvote.get_all_upvotes(pitch_id=Pitch.id)
+ 
     
 
-    return render_template('home.html', pitch = pitch, pickuplines=pickuplines, interviewpitch= interviewpitch, promotionpitch = promotionpitch, bussinessplanpitch = bussinessplanpitch, upvotes=upvotes)
+    return render_template('index.html')
     
 
 
 
 
 @main.route('/pitches/new/', methods = ['GET','POST'])
-@login_required
+# @login_required
 def new_pitch():
     form = PitchForm()
-    my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
+    # my_upvotes = Upvote.query.filter_by(pitch_id = Pitch.id)
     if form.validate_on_submit():
-        description = form.description.data
-        title = form.title.data
-        owner_id = current_user
-        category = form.category.data
-        print(current_user._get_current_object().id)
-        new_pitch = Pitch(owner_id =current_user._get_current_object().id, title = title,description=description,category=category)
-        db.session.add(new_pitch)
-        db.session.commit()
+        # description = form.description.data
+        # title = form.title.data
+        # owner_id = current_user
+        # category = form.category.data
+        # # print(current_user._get_current_object().id)
+        # new_pitch = PITCH(title = title,description=description,category=category)
+        # db.session.add(new_pitch)
+        # db.session.commit()
         
         
         return redirect(url_for('main.index'))

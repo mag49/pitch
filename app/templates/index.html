@@ -1,16 +1,28 @@
-{% extends 'base.html'%} 
+{% extends 'bootstrap/base.html'%}
+
 {% block content %}
 <div class="container-fluid welcome-page">
     <div class="container">
         <div class="row">
             <div class="col-md-12 welcome">
-                {% if current_user.is_authenticated%}
-                <a id="start" class="btn btn-danger animated infinite flash" href="{{url_for('home.index')}}"> Pitches</a>
-                {% else %}
-                <a id="start" class="btn btn-danger animated infinite flash" href="{{url_for('auth.login')}}">Sign In</a>
-                {% endif %}
+                
+                <a id="start" class="btn btn-danger animated infinite flash" href="{{url_for('main.new_pitch')}}">
+                    Pitches</a>
+                
+                <a id="start" class="btn btn-danger animated infinite flash" href="{{url_for('auth.login')}}">Sign
+                    In</a>
+                
             </div>
         </div>
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </div>
 </div>
 {% endblock %}

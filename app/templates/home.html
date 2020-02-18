@@ -1,50 +1,14 @@
 {% extends 'bootstrap/base.html' %}
-{% import 'macros.html' as macro %}
-{% block navbar %}
-{% include 'navbar.html'%}
-{% endblock %}
 
 <!-- Styles block -->
 
 {% block styles%}
     {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/movie.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/movie.css')}}"> -->
 {% endblock %}
 
-  {% block content %}
-    <div class="container">
-      <h3 style="color: grey;text-align: center">Pitch Categories</h3>
-      <br>
-      <ul>
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#education">Pick-upline</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#interview">Interview</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#bussiness plan">BussinesPlan</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#promotion">Promotion</a>
-        </li>
-      </ul>
-
-      <div class="tab-content">
-        <div id="product" class="container tab-pane active"><br>
-          {{ macro.display(pickupline) }}
-          
-        </div>
-        <div id="interview" class="container tab-pane fade"><br>
-          {{ macro.display(interviewpitch) }}
-        </div>
-        <div id="pickupline" class="container tab-pane fade"><br>
-          {{ macro.display(BussinesPlan)}}
-        </div>
-        <div id="promotion" class="container tab-pane fade"><br>
-          {{ macro.display(promotionpitch) }}
-        </div>
-        
-      </div>
-    </div>
-  {% endblock %}
+{% block content %}
+  <div class="container">
+      <p>Home</p>
+  </div>
+{% endblock %}
