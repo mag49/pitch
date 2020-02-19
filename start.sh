@@ -1,4 +1,4 @@
-export DATABASE_URL='postgresql+psycopg2://moringa:word@localhost/pitch'
+export DATABASE_URL='sqlite:///records.db'
 
 export SECRET_KEY='maggie'
 

@@ -20,14 +20,15 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a style="text-align: center; color: blue;" href="/">Home</a></li>
+                    <li><a style="text-align: center; color: #fff;" href="/">Home</a></li>
+                    <li><a style="color:#fff;" href="{{url_for('main.home')}}">Categories</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
-                  <li><a style="color:blue;" href="{{url_for('auth.logout')}}">Sign out</a></li>
+                  <li><a style="color:#fff;" href="{{url_for('auth.logout')}}">Sign out</a></li>
                   {% else %}
-                  <li><a style="color:blue;" href="{{url_for('auth.login')}}">Sign in</a></li>
+                  <li><a style="color:#fff;" href="{{url_for('auth.login')}}">Sign in</a></li>
                   {%endif%}
                 </ul>
             </div>

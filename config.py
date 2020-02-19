@@ -4,7 +4,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY = 'maggie'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:word@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///records.db'
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -13,7 +13,7 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     SUBJECT_PREFIX = 'Pitch'
-    SENDER_EMAIL = 'james@moringaschool.com'
+    SENDER_EMAIL = 'ciru930@gmail.com'
 class ProdConfig(Config):
     '''
     Production configuration child class
@@ -23,8 +23,9 @@ class DevConfig(Config):
     '''
     Development configuration child class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:word@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///records.db'
     DEBUG = True
+    
 config_options = {
 'development':DevConfig,
 'production':ProdConfig
