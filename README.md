@@ -86,6 +86,8 @@ Technical Requirements
 
 This can be found in the specs.md file.
 
+## Github link https://pitchx.herokuapp.com
+
 ## User Stories
 A user can see the pitches posted by other people
 
